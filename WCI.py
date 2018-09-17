@@ -22,7 +22,9 @@ class App:
         self.wrn_btn.grid(row=7, column=50)
 
     def warn(self):
+        self.count += 1
         messagebox.showwarning(self.message_title.get(), self.message_content.get())
+        self.wrn_btn.configure(text="Count: "+str(self.count))
 
 root = Tk()
 page = App(root)
