@@ -40,7 +40,7 @@ class App:
         self.count_bar['value'] += 1
         messagebox.showwarning(self.message_title.get(), self.message_content.get())
 
-        if self.count_bar['value'] > 8:
+        if self.count_bar['value'] >= 10:
             self.ex_btn.config(state=NORMAL)
             self.ex_btn.grid(row=10, column=50)
 
