@@ -1,16 +1,20 @@
-from tkinter import Tk, Button, Entry, messagebox, Label, Menu, NORMAL
+from tkinter import Tk, Button, Entry, messagebox, Label, Menu, NORMAL, Message
 from tkinter.ttk import Progressbar
+import webbrowser
 
 class App:
     def __init__(self, master):
         self.master = master
         master.title("Warning Control Interface")
-        master.geometry("300x170")
+        master.geometry("300x235")
+
+        self.quest = Message(master, text="Fill the progress bar to unlock the hidden button.")
+        self.quest.grid(row=1, column=50, pady=5)
 
         self.count_bar = Progressbar(master, mode='determinate', maximum=10)
         self.count_bar.grid(row=8, column=50, pady=10)
 
-        self.ex_btn = Button(master, text="Fire!", command=self.warn, fg="red")
+        self.ex_btn = Button(master, text="Secret button!", command=self.fire, fg="red")
 
         #menu setup
         self.menu_obj = Menu(master)
@@ -22,10 +26,10 @@ class App:
 
 
         self.message_title = Entry(master)
-        self.message_title.grid(row=1, column=50)
+        self.message_title.grid(row=2, column=50)
 
         self.message_title_text = Label(master, text="Title: ")
-        self.message_title_text.grid(row=1, column=40)
+        self.message_title_text.grid(row=2, column=40)
         
         self.message_content = Entry(master)
         self.message_content.grid(row=3, column=50)
@@ -54,6 +58,9 @@ class App:
     def fill(self):
         self.count_bar['value'] = 10
         self.warn()
+
+    def fire(self):
+        webbrowser.open_new("https://cat-bounce.com/")
 
 root = Tk()
 page = App(root)
